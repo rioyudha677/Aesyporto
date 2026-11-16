@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portofolio Rohadatul Aesy</title>
+<meta name="description" content="Portofolio Rohadatul Aesy, mahasiswa Sistem Informasi Nusa Putra University dengan latar belakang multimedia dan produksi film.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a production slate. Every project is a numbered "take"; mono labels carry real metadata (year, method, standard). */
+:root{
+  --paper:#f4f0f7;
+  --paper-2:#ebe4f1;
+  --ink:#1f1428;
+  --muted:#5e5169;
+  --lilac:#8b5cc4;
+  --line:#d6cbe0;
+  --card:#fbf9fc;
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16101b; --paper-2:#1f1726; --ink:#f1eaf6; --muted:#b3a5bf;
+    --lilac:#c19bf0; --line:#382c43; --card:#1d1524; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16101b; --paper-2:#1f1726; --ink:#f1eaf6; --muted:#b3a5bf;
+  --lilac:#c19bf0; --line:#382c43; --card:#1d1524; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--lilac);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1}
+
+/* Top bar */
+.bar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.bar nav{display:flex;gap:clamp(12px,2.5vw,28px);flex-wrap:wrap}
+.bar nav a{text-decoration:none;color:var(--muted)}
+.bar nav a:hover{color:var(--ink)}
+.rec{display:inline-flex;align-items:center;gap:8px}
+.rec i{width:8px;height:8px;border-radius:50%;background:#e0445a;animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+@media (max-width:620px){.bar nav{display:none}}
+
+/* Hero */
+.hero{padding:clamp(40px,7vw,88px) 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero h1{font-size:clamp(56px,11vw,148px);font-weight:800;letter-spacing:-.045em;line-height:.86}
+.hero h1 span{display:block;font-weight:300;color:var(--lilac);letter-spacing:-.03em}
+.hero .lede{max-width:56ch;margin:28px 0 0;font-size:clamp(17px,1.6vw,19px);color:var(--muted)}
+.hero .lede b{color:var(--ink);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 clamp(32px,5vw,56px)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1.5px solid var(--ink);transition:transform .15s,background .15s,color .15s}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.portrait{position:relative;align-self:center;justify-self:end;width:min(100%,380px);margin:0 0 clamp(32px,5vw,56px)}
+.portrait .frame{position:relative;aspect-ratio:720/920;border-radius:999px 999px 18px 18px;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,var(--lilac) 70%,var(--paper)) 0%,var(--lilac) 100%)}
+.portrait .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:bottom;filter:grayscale(1) contrast(1.05)}
+.portrait::after{content:"";position:absolute;inset:-10px;border:1.5px solid var(--lilac);border-radius:999px 999px 26px 26px;opacity:.45;pointer-events:none}
+.portrait figcaption{position:absolute;left:-14px;bottom:22px;background:var(--ink);color:var(--paper);padding:8px 12px;border-radius:8px}
+.hero .wrap+.wrap{display:block}
+.slate{border-top:2px solid var(--ink);display:grid;grid-template-columns:repeat(4,1fr)}
+.slate div{padding:14px 16px;border-right:1px solid var(--line)}
+.slate div:last-child{border-right:0}
+.slate small{display:block;color:var(--muted)}
+.slate strong{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em}
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr}
+  .portrait{width:min(68%,280px);order:-1;justify-self:start;margin:10px 0 8px 10px}
+  .slate{grid-template-columns:repeat(2,1fr)}
+  .slate div:nth-child(2){border-right:0}
+  .slate div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+
+/* Section scaffolding */
+section{padding:clamp(56px,8vw,104px) 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:clamp(28px,4vw,44px)}
+.sec-head h2{font-size:clamp(34px,5vw,56px);font-weight:700;letter-spacing:-.03em}
+.sec-head .mono{color:var(--muted)}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px)}
+.about h3{font-size:14px;font-family:var(--mono);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lilac);margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.chips li{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-weight:500;font-size:15px}
+.chips.accent li{border-color:var(--lilac);color:var(--ink);background:color-mix(in srgb,var(--lilac) 12%,var(--card))}
+.about .block+.block{margin-top:32px}
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.timeline li{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+.timeline li:last-child{border-bottom:1px solid var(--line)}
+.timeline .when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.timeline b{display:block;font-weight:600}
+.timeline span{color:var(--muted);font-size:15px}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
+@media (max-width:460px){.timeline li{grid-template-columns:1fr;gap:4px}}
+
+/* Takes */
+.takes{display:grid;gap:clamp(40px,6vw,72px)}
+.take{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,52px);align-items:center}
+.take:nth-child(even) > .media,.take:nth-child(even) > .gallery{order:2}
+.media{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;overflow:hidden;aspect-ratio:4/3;display:grid;place-items:center;padding:clamp(14px,2.5vw,28px)}
+.media{position:relative}
+.media img{position:absolute;inset:clamp(14px,2.5vw,28px);width:calc(100% - 2*clamp(14px,2.5vw,28px));height:calc(100% - 2*clamp(14px,2.5vw,28px));object-fit:contain;filter:drop-shadow(0 14px 22px rgba(31,20,40,.28));transition:transform .35s ease}
+.media.full{padding:0;aspect-ratio:16/9;align-self:center}
+.media.full img{inset:0;width:100%;height:100%;object-fit:cover;filter:none}
+.take:hover .media:not(.browser) img{transform:scale(1.025)}
+.media.stack{position:relative}
+.media.stack img{inset:auto;width:78%;height:auto}
+.media.stack img:first-child{top:9%;left:5%}
+.media.stack img:last-child{bottom:9%;right:5%}
+.take-meta{display:flex;gap:10px 18px;flex-wrap:wrap;color:var(--muted);margin-bottom:14px}
+.take-meta .no{color:var(--lilac);font-weight:600}
+.take h3{font-size:clamp(28px,3.6vw,42px);font-weight:700;letter-spacing:-.025em;margin-bottom:16px}
+.take p{margin:0 0 18px;max-width:58ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.facts li{font-family:var(--mono);font-size:12px;padding:5px 10px;border-radius:6px;background:var(--paper-2);border:1px solid var(--line)}
+.stat{display:flex;align-items:center;gap:16px;margin:0 0 22px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);max-width:420px}
+.stat strong{font-family:var(--display);font-size:40px;font-weight:800;letter-spacing:-.03em;color:var(--lilac);font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:14px;color:var(--muted);line-height:1.4}
+.link{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;border-bottom:2px solid var(--lilac);padding-bottom:2px}
+.link:hover{color:var(--lilac)}
+.link svg{width:14px;height:14px}
+@media (max-width:820px){.take{grid-template-columns:1fr}.take:nth-child(even) > .media,.take:nth-child(even) > .gallery{order:0}}
+
+
+.about-text{max-width:68ch;margin:0 0 18px;font-size:clamp(17px,1.5vw,19px);line-height:1.7}
+.about-text + .about{margin-top:clamp(28px,4vw,44px)}
+/* Experience */
+.jobs{list-style:none;margin:0;padding:0;display:grid}
+.jobs > li{display:grid;grid-template-columns:180px 1fr;gap:clamp(16px,3vw,40px);padding:clamp(22px,3vw,32px) 0;border-top:1px solid var(--line)}
+.jobs > li:last-child{border-bottom:1px solid var(--line)}
+.job-when{color:var(--lilac);font-weight:600;padding-top:6px;font-variant-numeric:tabular-nums}
+.jobs h3{font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.jobs .org{margin:6px 0 12px;color:var(--muted);font-weight:500}
+.jobs ul{margin:0;padding-left:18px;max-width:70ch;display:grid;gap:6px}
+.jobs ul li::marker{color:var(--lilac)}
+@media (max-width:640px){.jobs > li{grid-template-columns:1fr;gap:6px}}
+.inl{text-decoration:none;border-bottom:1.5px solid var(--lilac)}
+.inl:hover{color:var(--lilac)}
+/* Certificates */
+.certs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.certs a{display:flex;flex-direction:column;gap:4px;height:100%;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--card);text-decoration:none;transition:border-color .15s,transform .15s}
+.certs a:hover{border-color:var(--lilac);transform:translateY(-2px)}
+.certs .mono{color:var(--lilac);font-size:11px}
+.certs b{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.certs small{color:var(--muted);font-size:14px}
+
+
+/* Browser-frame scroll preview (SIPANDU) */
+.media.browser{padding:0;display:flex;align-items:stretch;place-items:stretch;flex-direction:column;background:var(--card);aspect-ratio:4/3.2}
+.media.browser .chrome{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.media.browser .chrome i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.media.browser .chrome span{margin-left:8px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em}
+.media.browser .chrome .hint{margin-left:auto;font-style:normal;font-family:var(--mono);font-size:10px;color:var(--lilac);letter-spacing:.04em}
+.media.browser .viewport{position:relative;flex:1;overflow:hidden}
+.media.browser .viewport img{position:static;inset:auto;width:100%;height:auto;filter:none;transform:translateY(0);transition:transform 9s cubic-bezier(.45,0,.55,1)}
+.media.browser:hover .viewport img,.media.browser:focus-visible .viewport img{transform:translateY(calc(-100% + var(--vh,300px)))}
+@media (hover:none){
+  .media.browser .chrome .hint{font-size:0}
+  .media.browser .chrome .hint::after{content:"↕ geser";font-size:10px}
+  .media.browser .viewport{overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .media.browser .viewport img{transition:none;transform:none!important}
+}
+
+
+/* Radify gallery */
+.gallery{display:grid;gap:10px;min-width:0}
+.media.shots{aspect-ratio:auto}
+.media.shots .shot{position:relative;aspect-ratio:1200/747;background:#fff}
+.media.shots .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:none;transition:opacity .2s}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tabs button{font:500 13px/1 var(--body);padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;transition:all .15s}
+.tabs button:hover{color:var(--ink);border-color:var(--lilac)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media (max-width:620px){.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.tabs::-webkit-scrollbar{display:none}.tabs button{flex:0 0 auto;font-size:12px}}
+
+/* Contact */
+.contact{background:var(--ink);color:var(--paper);padding:clamp(64px,9vw,120px) 0 40px}
+.contact .big{font-size:clamp(52px,10vw,132px);font-weight:800;letter-spacing:-.045em;line-height:.88}
+.contact .big span{color:var(--lilac);font-weight:300}
+.contact p{color:color-mix(in srgb,var(--paper) 70%,transparent);max-width:46ch;margin:24px 0 36px;font-size:18px}
+.contact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1px solid color-mix(in srgb,var(--paper) 25%,transparent)}
+.contact-list > *{padding:20px 16px 20px 0;text-decoration:none;color:inherit}
+.contact-list small{display:block;color:color-mix(in srgb,var(--paper) 55%,transparent);margin-bottom:6px}
+.contact-list b{font-weight:500;word-break:break-word}
+.contact-list a:hover b{color:var(--lilac)}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:56px;color:color-mix(in srgb,var(--paper) 50%,transparent)}
+@media (max-width:720px){.contact-list{grid-template-columns:1fr}.contact-list > *{border-bottom:1px solid color-mix(in srgb,var(--paper) 18%,transparent)}}
+
+/* Load sequence: starts visible, just slides a little */
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+.hero h1,.hero .lede,.cta,.portrait{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero .lede{animation-delay:.08s}.cta{animation-delay:.14s}.portrait{animation-delay:.04s}
+
+/* ---------- Mobile polish ---------- */
+.mnav{display:none}
+@media (max-width:620px){
+  body{font-size:16px}
+  .bar .wrap{height:auto;padding-top:10px;padding-bottom:0;flex-direction:column;align-items:stretch;gap:8px}
+  .bar .rec{justify-content:center}
+  .bar nav{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px;padding-bottom:10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .bar nav::-webkit-scrollbar{display:none}
+  .bar nav a{flex:0 0 auto;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:11px}
+  section[id]{scroll-margin-top:96px}
+
+  .hero{padding-top:28px}
+  .hero .wrap{gap:20px;text-align:center}
+  .portrait{width:min(62vw,240px);justify-self:center;margin:12px 0 4px}
+  .portrait::after{inset:-8px}
+  .portrait figcaption{left:50%;bottom:-12px;transform:translateX(-50%);white-space:nowrap;font-size:10px}
+  .hero h1{font-size:clamp(46px,14vw,64px)}
+  .hero .lede{margin-top:18px;font-size:15.5px;line-height:1.65}
+  .cta{justify-content:center;margin:22px 0 28px}
+  .cta .btn{flex:1 1 0;justify-content:center;padding:12px 14px}
+  .slate{text-align:left}
+  .slate div{padding:12px 12px}
+  .slate strong{font-size:17px}
+
+  section{padding:48px 0}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:4px;padding-bottom:12px;margin-bottom:24px}
+  .sec-head h2{font-size:32px}
+  .about .block+.block{margin-top:26px}
+  .about-text{font-size:16px;line-height:1.7}
+  .chips{gap:7px}
+  .chips li{padding:6px 11px;font-size:13.5px}
+  .timeline li{padding:13px 0}
+  .timeline .when{font-size:11.5px}
+
+  .jobs > li{padding:20px 0}
+  .jobs h3{font-size:21px}
+  .jobs .org{font-size:14.5px;margin:4px 0 10px}
+  .jobs ul{font-size:15px;gap:5px}
+
+  .certs{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .certs a{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;padding:12px 2px;display:grid;grid-template-columns:1fr auto;column-gap:12px;row-gap:2px}
+  .certs a:hover{transform:none}
+  .certs b{font-size:16px;grid-column:1;grid-row:1}
+  .certs small{font-size:13px;grid-column:1;grid-row:2}
+  .certs .mono{grid-column:2;grid-row:1;align-self:center;white-space:nowrap}
+
+  .takes{gap:44px}
+  .take{gap:16px}
+  .media{aspect-ratio:16/11;border-radius:12px}
+  .take h3{font-size:26px;margin-bottom:10px}
+  .take p{font-size:15.5px}
+  .stat strong{font-size:32px}
+
+  .contact{padding:56px 0 32px}
+  .contact .big{font-size:clamp(44px,13vw,60px)}
+  .contact p{font-size:16px;margin:18px 0 26px}
+  .contact-list > *{padding:14px 0}
+  .foot{margin-top:32px;font-size:10.5px}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="mono rec"><i></i>Portofolio · 2026</span>
+    <nav class="mono" aria-label="Navigasi">
+      <a href="#tentang">Tentang</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#karya">Karya</a>
+      <a href="#sertifikat">Sertifikat</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Perkenalan">
+    <div class="wrap">
+      <div>
+        <p class="mono" style="color:var(--muted);margin:0 0 18px">Halo! Perkenalkan</p>
+        <h1>Rohadatul <span>Aesy</span></h1>
+        <p class="lede"><b>Fresh graduate Sistem Informasi</b> dari Nusa Putra University. Fokus di bidang <b>administration, data management, system analyst, UI design, customer service, dan business analyst</b>.</p>
+        <div class="cta">
+          <a class="btn solid" href="https://www.linkedin.com/in/rohadatul-aesy-a93628286/" target="_blank" rel="noopener">LinkedIn
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <a class="btn ghost" href="#kontak">Hubungi saya</a>
+        </div>
+      </div>
+      <figure class="portrait" style="margin:0">
+        <div class="frame"><img src="assets/foto-hero.webp" alt="Foto Rohadatul Aesy" width="720" height="920"></div>
+        <figcaption class="mono">SI · Nusa Putra</figcaption>
+      </figure>
+    </div>
+    <div class="wrap">
+      <div class="slate">
+        <div><small class="mono">Status</small><strong>Fresh Graduate</strong></div>
+        <div><small class="mono">IPK</small><strong>3,85 / 4,00</strong></div>
+        <div><small class="mono">Pengalaman</small><strong>5 tempat</strong></div>
+        <div><small class="mono">Sertifikat</small><strong>11</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tentang">
+    <div class="wrap">
+      <div class="sec-head"><h2>Tentang saya</h2><span class="mono">Profil</span></div>
+      <p class="about-text">Fresh Graduate Jurusan Sistem Informasi yang memiliki minat dan keahlian di bidang Administrasi, Data Entry, Sistem Analyst serta UI/UX Design. Berpengalaman sebagai Admin dan Kasir, dengan kemampuan dalam pengelolaan administrasi, entry dan validasi data, pengecekan kesesuaian IMEI dengan stok barang masuk, hingga manajemen transaksi keuangan secara akurat.</p>
+      <p class="about-text">Memiliki pengalaman magang dalam bidang Sistem Analyst dengan terlibat dalam analisis kebutuhan sistem, pengumpulan dan pengolahan informasi, serta perancangan alur sistem. Selain itu, memiliki keahlian dalam perancangan UI/UX website melalui pembuatan wireframe, mockup, dan user flow. Terbiasa bekerja dengan sistem informasi, teliti terhadap detail, kreatif, dan mampu bekerja secara individu maupun tim.</p>
+      <div class="about">
+        <div>
+          <div class="block">
+            <h3>Minat karier</h3>
+            <ul class="chips accent">
+              <li>Administration</li>
+              <li>Data Management</li>
+              <li>System Analyst</li>
+              <li>UI Designer</li>
+              <li>Customer Service</li>
+              <li>Business Analyst</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Keahlian</h3>
+            <ul class="chips">
+              <li>Administration</li>
+              <li>Data Management</li>
+              <li>System Analyst</li>
+              <li>UI Designer</li>
+              <li>Customer Service</li>
+              <li>Business Analyst</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Bahasa &amp; tools</h3>
+            <ul class="chips">
+              <li>Bahasa Indonesia</li>
+              <li>English (Dasar)</li>
+              <li>Microsoft Office</li>
+              <li>Figma</li>
+              <li>Draw.io</li>
+              <li>StarUML</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <h3>Pendidikan</h3>
+            <ol class="timeline">
+              <li><span class="when">Sep 2022 – Jul 2026</span><div><b>Nusa Putra University</b><span>Sistem Informasi · IPK 3,85 / 4,00</span></div></li>
+              <li><span class="when">Jul 2019 – Jun 2022</span><div><b>SMK Plus Al Farhan</b><span>Multimedia</span></div></li>
+            </ol>
+          </div>
+          <div class="block">
+            <h3>Organisasi</h3>
+            <ol class="timeline">
+              <li><span class="when">Sep 2023 – Aug 2024</span><div><b>Himpunan Mahasiswa Sistem Informasi</b><span>Anggota Humas: menyebarkan informasi lewat WhatsApp dan email, serta penanggung jawab kegiatan hearing bulanan.</span></div></li>
+              <li><span class="when">2024</span><div><b>Kuliah Kerja Nyata (KKN)</b><span>Bendahara: mengelola pemasukan dan pengeluaran kelompok.</span></div></li>
+            </ol>
+          </div>
+          <div class="block">
+            <h3>Penghargaan</h3>
+            <ol class="timeline">
+              <li><span class="when">Okt 2026</span><div><b><a class="inl" href="https://jtiik.ub.ac.id/index.php/jtiik/en/article/view/11356" target="_blank" rel="noopener">Publikasi Jurnal SINTA 2 · JTIIK ↗</a></b><span>Artikel ilmiah terbit di Jurnal Teknologi Informasi dan Ilmu Komputer, Universitas Brawijaya.</span></div></li>
+              <li><span class="when">Jun 2022</span><div><b><a class="inl" href="https://youtu.be/P8LR_9tBWmA?si=h_b_pX-gXaqKiSS-" target="_blank" rel="noopener">Kelompok Film Terbaik ↗</a></b><span>Film “King of Red”, terbaik pilihan sosial media 2022.</span></div></li>
+              <li><span class="when">Des 2019</span><div><b><a class="inl" href="https://drive.google.com/file/d/1Bb6DPsOn6d_rkSDQ0sINghAfc6VBWIKA/view?usp=sharing" target="_blank" rel="noopener">Siswa Berprestasi ↗</a></b><span>Peringkat 1 dengan nilai tertinggi kelas 1 SMK, 2019/2020.</span></div></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pengalaman" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Pengalaman kerja</h2><span class="mono">2020 – 2026</span></div>
+      <ol class="jobs">
+        <li>
+          <div class="job-when mono">Feb – Apr 2026</div>
+          <div>
+            <h3>Cashier &amp; Admin</h3>
+            <p class="org">CV Delta Jaya Cellurer · Sukabumi</p>
+            <ul>
+              <li>Melayani transaksi pembayaran tunai maupun non-tunai dengan teliti dan efisien.</li>
+              <li>Mengelola kas harian dan mencatat laporan keuangan secara akurat.</li>
+              <li>Mencocokkan IMEI dengan stok barang yang masuk.</li>
+              <li>Menangani pertanyaan pelanggan dengan profesional dan ramah.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="job-when mono">Sep – Des 2025</div>
+          <div>
+            <h3>Data Entry &amp; UI/UX Intern</h3>
+            <p class="org">Badan Pusat Statistik · Kabupaten Sukabumi</p>
+            <ul>
+              <li>Entry dan validasi data survei SUSENAS dan SERUTI untuk memastikan kelengkapan dan keakuratan data.</li>
+              <li>Membantu bendahara mengelola administrasi keuangan, termasuk entry data pengeluaran dan realisasi anggaran ke sistem keuangan internal.</li>
+              <li>Merancang UI/UX website SIPANDU melalui wireframe, mockup, prototipe interaktif, dan user flow diagram.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="job-when mono">Jul – Agu 2025</div>
+          <div>
+            <h3>UI Design Intern</h3>
+            <p class="org">PT Proxinet Jaringan Nusantara · Sukabumi</p>
+            <ul>
+              <li>Merancang antarmuka sistem web untuk pengelolaan jaringan dan pelanggan.</li>
+              <li>Mendesain dashboard yang informatif dan mudah dipakai tim teknis maupun administrasi.</li>
+              <li>Menentukan skema warna, ikon, dan elemen visual yang konsisten dengan identitas perusahaan.</li>
+              <li>Berkolaborasi dengan tim pengembang menyesuaikan desain dengan fungsi sistem.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="job-when mono">Feb – Jun 2025</div>
+          <div>
+            <h3>Pengembangan Media Sosial &amp; UI Design Intern</h3>
+            <p class="org">PT Siber Teknologi Persada Indonesia · Bogor</p>
+            <ul>
+              <li>Menyusun dan mempublikasikan berita aktivitas perusahaan di media sosial dan website.</li>
+              <li>Mengedit teks dan visual sesuai standar komunikasi digital perusahaan.</li>
+              <li>Ikut merancang UI aplikasi internal yang user-friendly dan sesuai identitas perusahaan.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="job-when mono">Okt – Des 2020</div>
+          <div>
+            <h3>PPID Intern</h3>
+            <p class="org">Diskominfo Kota Sukabumi</p>
+            <ul>
+              <li>Meliput acara di lapangan: foto untuk publikasi berita dan video untuk YouTube, lalu mengedit hasilnya.</li>
+              <li>Membuat pamflet promosi untuk keperluan radio.</li>
+              <li>Mengumpulkan dan menganalisis data interaksi Instagram ke Excel untuk laporan.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="sertifikat" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Sertifikat</h2><span class="mono">11 sertifikat</span></div>
+      <ul class="certs">
+        <li><a href="https://drive.google.com/file/d/1gJxvlwn8l9I8yxc4Ecbb-TnFNGg3xD9l/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Agu 2026</span><b>Software Development Certification</b><small>GTTC (Global Training &amp; Test Centre)</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1rJKA4a38RAGzzc29zMMMc9WalSNQRD0s/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Jul 2026</span><b>Public Speaking Certification</b><small>GTTC (Global Training &amp; Test Centre)</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1yJKzpBiBS8JJJeGWOiYWcDMo6jqljYAt/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Jul 2026</span><b>English Language Certification</b><small>English Score British Course</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1coVdIxIrE9YxXYcGr_kEiN1f8DHdHOef/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Apr 2026</span><b>TPA/TKDA Bappenas</b><small>Bina Cipta Seleksindo</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1ehmQV0VpRgBqlSKzO05ghDhOKpBGKpsA/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Apr 2026</span><b>Japanese Language Course N5</b><small>RSP Sensei</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1xoy6QNIqpSYQQpnqtmrUcvH5pWo5DV1g/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Apr 2026</span><b>Microsoft Certification</b><small>Trust Training Partners</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1gjTeLMRLNPnyCjB59QoZGn1Umw5KKdiG/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Jun 2025</span><b>Data Scientist Competency Certificate</b><small>PT Siber Teknologi Persada Indonesia</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1MjjWFooer4N-yfl782EjSTQY7q71hYSx/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Jun 2025</span><b>Developer Competency Certificate</b><small>PT Siber Teknologi Persada Indonesia</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1bY6R3S6NfX5pwPZxtombtQ7OcruOanf2/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Mei 2023</span><b>Cybersecurity</b><small>ISC2</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1PUmHq4KNDtDeRFSVEGwEQO-SJXNv5UMN/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Mar 2023</span><b>Python Certification</b><small>GTTC (Global Training &amp; Test Centre)</small></a></li>
+        <li><a href="https://drive.google.com/file/d/1WxaEiqMDnlJ0VixesOukTSbHw_Hzj4fG/view?usp=sharing" target="_blank" rel="noopener"><span class="mono">Jun 2022</span><b>Sertifikat Kompetensi</b><small>Sukabumi TV</small></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="karya" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Karya pilihan</h2><span class="mono">7 take</span></div>
+      <div class="takes">
+
+        <article class="take">
+          <div class="media browser" tabindex="0" aria-label="Desain halaman SIPANDU, arahkan kursor untuk menggulir">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>sipandu · bps kab. sukabumi</span><em class="hint">↕ arahkan kursor</em></div>
+            <div class="viewport"><img src="assets/sipandu.webp" alt="Desain lengkap halaman beranda website SIPANDU" width="900" height="3573"></div>
+          </div>
+          <div>
+            <div class="take-meta mono"><span class="no">Take 01</span><span>UI/UX · BPS Kab. Sukabumi</span></div>
+            <h3>SIPANDU</h3>
+            <p>Sistem Informasi Pantauan Data Terpadu, website untuk memantau alur dokumen survei secara real-time, dari mitra, kabupaten, hingga proses pengolahan IPDS. Saya merancang UI/UX-nya selama magang di Badan Pusat Statistik Kabupaten Sukabumi melalui wireframe, mockup, prototipe interaktif, dan user flow diagram.</p>
+            <p>Halaman beranda memuat status dokumen per Kode NKS (sudah, belum, non respon), filter jenis survei, feed Instagram BPS, pusat bantuan FAQ, dan langganan informasi.</p>
+            <ul class="facts"><li>Figma</li><li>Wireframe</li><li>Mockup</li><li>Prototipe</li><li>User flow</li></ul>
+            <a class="link" href="https://www.figma.com/design/KnkaTp5UFblcykfa69mc0y/SIPANDU-BPS?node-id=1038-6184&amp;t=LUvY0isezO7zBqsF-1" target="_blank" rel="noopener">Lihat desain di Figma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+
+        <article class="take">
+          <div class="gallery">
+            <div class="media browser shots">
+              <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>radify · sistem radius</span></div>
+              <div class="shot"><img id="radify-shot" src="assets/radify-dashboard.webp" alt="Desain halaman Dashboard Radify" width="1200" height="747"></div>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Halaman desain Radify"><button type="button" role="tab" id="rtab-dashboard" aria-selected="true" data-src="assets/radify-dashboard.webp" data-alt="Desain halaman Dashboard Radify">Dashboard</button><button type="button" role="tab" id="rtab-login" aria-selected="false" data-src="assets/radify-login.webp" data-alt="Desain halaman Login Radify">Login</button><button type="button" role="tab" id="rtab-data-user" aria-selected="false" data-src="assets/radify-data-user.webp" data-alt="Desain halaman Data User Radify">Data User</button><button type="button" role="tab" id="rtab-package" aria-selected="false" data-src="assets/radify-package.webp" data-alt="Desain halaman Package Radify">Package</button><button type="button" role="tab" id="rtab-sessions" aria-selected="false" data-src="assets/radify-sessions.webp" data-alt="Desain halaman Sessions Radify">Sessions</button><button type="button" role="tab" id="rtab-income" aria-selected="false" data-src="assets/radify-income.webp" data-alt="Desain halaman Income Radify">Income</button></div>
+          </div>
+          <div>
+            <div class="take-meta mono"><span class="no">Take 02</span><span>UI Design · Sistem RADIUS</span></div>
+            <h3>Radify</h3>
+            <p>Desain antarmuka dashboard admin untuk sistem RADIUS, yaitu pengelolaan jaringan internet dan pelanggan. Admin bisa memantau pengguna aktif dan online, pemakaian bandwidth, paket terpopuler, serta pelanggan dengan pemakaian terbesar.</p>
+            <p>Terdiri dari 6 halaman: login, dashboard, data user, paket internet, sesi aktif (dengan IP, MAC address, NAS, dan tombol disconnect), serta income lengkap dengan grafik, invoice, dan ekspor PDF/Excel.</p>
+            <ul class="facts"><li>Figma</li><li>Dashboard admin</li><li>6 halaman</li><li>Data visualization</li></ul>
+          </div>
+        </article>
+
+        <article class="take">
+          <a class="media full" href="https://youtu.be/P8LR_9tBWmA?si=h_b_pX-gXaqKiSS-" target="_blank" rel="noopener" aria-label="Tonton video klip King of Red di YouTube">
+            <img src="assets/video-king-of-red.webp" alt="Thumbnail video klip King of Red" width="1200" height="675">
+          </a>
+          <div>
+            <div class="take-meta mono"><span class="no">Take 03</span><span>Produksi video</span></div>
+            <h3>Video Klip “King of Red”</h3>
+            <p>Sebagai Produser, saya mengatur jadwal agar proyek berjalan maksimal, mengelola keuangan, dan mengawasi pekerjaan seluruh anggota tim dari awal hingga video klip ini selesai.</p>
+            <ul class="facts"><li>Produser</li><li>Manajemen waktu</li><li>Anggaran</li><li>Film terbaik pilihan sosmed 2022</li></ul>
+            <a class="link" href="https://youtu.be/P8LR_9tBWmA?si=h_b_pX-gXaqKiSS-" target="_blank" rel="noopener">Tonton di YouTube <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="take">
+          <div class="media">
+            <img src="assets/audit-iso27001.webp" alt="Sampul buku laporan Audit Sistem Informasi Orely Studio" width="900" height="900">
+          </div>
+          <div>
+            <div class="take-meta mono"><span class="no">Take 04</span><span>Audit SI · Orely Studio</span></div>
+            <h3>Audit Sistem Informasi</h3>
+            <p>Buku laporan audit yang mengevaluasi keamanan informasi Orely Studio: profil perusahaan, identifikasi aset digital utama, dan penilaian risiko terhadap ancaman seperti gangguan listrik dan peretasan. Rekomendasinya meliputi pelatihan keamanan, audit sistem informasi, dan dokumentasi peran keamanan informasi, agar pengelolaan data aman, efisien, dan sesuai standar.</p>
+            <ul class="facts"><li>ISO/IEC 27001:2013</li><li>Penilaian risiko</li><li>Aset digital</li></ul>
+            <a class="link" href="https://bit.ly/3D9ZCLu" target="_blank" rel="noopener">Lihat dokumen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="take">
+          <div class="media">
+            <img src="assets/laporan-waterfall.webp" alt="Sampul laporan sistem penjualan berbasis web Supermarket Simpang Tiga" width="566" height="800">
+          </div>
+          <div>
+            <div class="take-meta mono"><span class="no">Take 05</span><span>Analisis &amp; perancangan</span></div>
+            <h3>Sistem Penjualan Berbasis Web</h3>
+            <p>Laporan pengembangan sistem penjualan untuk Supermarket Simpang Tiga dengan metode Waterfall, untuk meningkatkan efisiensi operasional lewat fitur login, dashboard, manajemen barang, transaksi, dan laporan penjualan. Dilengkapi diagram UML (use case, activity, sequence, class), DFD, dan ERD.</p>
+            <ul class="facts"><li>Waterfall</li><li>UML</li><li>DFD</li><li>ERD</li></ul>
+            <a class="link" href="https://bit.ly/3OFTVYh" target="_blank" rel="noopener">Lihat dokumen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="take">
+          <div class="media">
+            <img src="assets/jurnal-spk-saw.webp" alt="Halaman pertama jurnal Sistem Pendukung Keputusan pemilihan tempat kos" width="618" height="800">
+          </div>
+          <div>
+            <div class="take-meta mono"><span class="no">Take 06</span><span>Jurnal · SPK</span></div>
+            <h3>Sistem Pendukung Keputusan Pemilihan Kos</h3>
+            <p>Jurnal tentang SPK pemilihan tempat kos untuk mahasiswa di Cibolang dengan metode Simple Additive Weighting (SAW), berdasarkan kriteria harga, fasilitas, jarak, kebersihan, dan keamanan. Metode SAW terbukti efektif mempermudah pengambilan keputusan mahasiswa.</p>
+            <div class="stat"><strong>0,805</strong><span>Nilai preferensi tertinggi, diraih Kos Pak Agus sebagai pilihan terbaik</span></div>
+            <ul class="facts"><li>Metode SAW</li><li>5 kriteria</li></ul>
+            <a class="link" href="https://bit.ly/4fXnwbS" target="_blank" rel="noopener">Lihat dokumen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+        </article>
+
+        <article class="take">
+          <div class="media stack">
+            <img src="assets/admin-panel.webp" alt="Tampilan panel admin pengelolaan postingan berita" width="1200" height="580">
+            <img src="assets/portal-berita.webp" alt="Tampilan halaman portal berita yang dipublikasikan" width="1200" height="563">
+          </div>
+          <div>
+            <div class="take-meta mono"><span class="no">Take 07</span><span>Konten digital</span></div>
+            <h3>Publikasi Berita</h3>
+            <p>Membuat dan mengelola konten berita yang informatif dan relevan di platform digital: mengumpulkan data dari berbagai sumber, menyusunnya menjadi narasi yang menarik, lalu mempublikasikannya lewat dashboard manajemen konten dan media sosial, agar informasi terkini sampai ke audiens dengan cepat dan mudah dipahami.</p>
+            <ul class="facts"><li>Penulisan berita</li><li>CMS</li><li>Media sosial</li></ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="contact" id="kontak">
+  <div class="wrap">
+    <p class="mono" style="margin:0 0 18px;color:var(--lilac)">Terima kasih</p>
+    <h2 class="big">Mari <span>terhubung.</span></h2>
+    <p>Terbuka untuk peluang di bidang administration, data management, system analyst, UI design, customer service, dan business analyst. Senang mendengar kabar dari Anda.</p>
+    <div class="contact-list">
+      <a href="mailto:rohadatulaesy04@gmail.com"><small class="mono">Email</small><b>rohadatulaesy04@gmail.com</b></a>
+      <a href="https://wa.me/6285862940936" target="_blank" rel="noopener"><small class="mono">WhatsApp</small><b>+62 858 6294 0936</b></a>
+      <a href="https://www.linkedin.com/in/rohadatul-aesy-a93628286/" target="_blank" rel="noopener"><small class="mono">LinkedIn</small><b>Rohadatul Aesy</b></a>
+      <a href="https://www.instagram.com/sssyrwrrrr/" target="_blank" rel="noopener"><small class="mono">Instagram</small><b>@sssyrwrrrr</b></a>
+      <div><small class="mono">Lokasi</small><b>Sukabumi, Jawa Barat</b></div>
+    </div>
+    <div class="foot mono"><span>© 2026 Rohadatul Aesy</span><a href="#" style="text-decoration:none">Kembali ke atas ↑</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function fit(){document.querySelectorAll('.media.browser').forEach(function(m){var v=m.querySelector('.viewport');if(v)m.style.setProperty('--vh',v.clientHeight+'px');});}
+  window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
+})();
+</script>
+<script>
+(function(){
+  var img=document.getElementById('radify-shot'); if(!img) return;
+  var tabs=[].slice.call(document.querySelectorAll('.tabs [role="tab"]'));
+  tabs.forEach(function(t){ var pre=new Image(); pre.src=t.dataset.src;
+    t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.setAttribute('aria-selected','false')});
+      t.setAttribute('aria-selected','true'); img.src=t.dataset.src; img.alt=t.dataset.alt;
+    });
+  });
+})();
+</script>
+</body>
+</html>
